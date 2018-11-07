@@ -163,7 +163,8 @@ var parseRSS = function(channel, items, options, callback) {
   items.forEach(function(item) {
     var jsonItem = {};
     if (item.enclosure) {
-        entry.enclosure = item.enclosure[0].$;
+        jsonItem.enclosure = item.enclosure[0].$;
+        jsonItem.attachments = jsonItem.enclosure
     }
     if (item.description) {
       jsonItem.content_html = getContent(item.description[0]);
